@@ -30,14 +30,14 @@ const PropertyDetailPage = () => {
                                 className="rounded-full"
                                 alt="The user name"
                             />
-                        <p><strong>Jamie Florig</strong> is your host</p>
+                        <p><strong>Jamie D. Florig</strong> is your host</p>
                         
                     </div>
                     <hr />
 
                     <p className="mt-6 text-lg">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-                        ashfausilhfausidfjkansdfasjdkfasnhdkf eauf
+                        This 2-bedroom, 1-bathroom bungalow features an open-concept living area, 
+                        modern kitchen with granite countertops, and a spacious master suite.”
                     </p>
                 </div>
 

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import PropertyList from "../components/properties/PropertyList";
 
 const MyPropertiesPage = () => {

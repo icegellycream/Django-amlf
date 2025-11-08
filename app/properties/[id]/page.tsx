@@ -24,13 +24,13 @@ const PropertyDetailPage = () => {
 
                     <div className="py-6 flex items-center space-x-4">
                         <Image
-                                src="/profilepics/landlady.jpg"
+                                src="/profilepics/ladygirl.jpg"
                                 width={50}
                                 height={50}
                                 className="rounded-full"
-                                alt="The user name"
+                                alt="the ladylgirl name"
                             />
-                        <p><strong>Jamie D. Florig</strong> is your host</p>
+                        <p><strong>Angeli Marie Figurado</strong> is your host</p>
                         
                     </div>
                     <hr />

@@ -15,7 +15,7 @@ const PropertyDetailPage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
                 <div className="py-6 pr-6 col-span-3">
-                    <h1 className="mb-4 text-4xl">Property Name</h1>
+                    <h1 className="mb-4 text-4xl">Cutie Angel Beach House</h1>
 
                     <span className="mb-6 block text-lg text-gray-600">
                         4 guests - 2 bedrooms - 1 bathroom
@@ -37,7 +37,7 @@ const PropertyDetailPage = () => {
 
                     <p className="mt-6 text-lg">
                         This 2-bedroom, 1-bathroom bungalow features an open-concept living area, 
-                        modern kitchen with granite countertops, and a spacious master suite.”
+                        modern kitchen with granite counter tops, and a spacious master suite.”
                     </p>
                 </div>
 

@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-theme {
+@theme {
   --color-airbnb: #ff385c;
   --color-airbnb-dark: #d50027;
 }

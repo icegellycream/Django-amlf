@@ -7,7 +7,7 @@ const PropertyDetailPage = () => {
             <div className="w-full h-[64vh] mb-4 overflow-hidden rounded-xl relative">
                 <Image
                     fill
-                    src="/propertyItemImages/beach_1.jpg"
+                    src="/beach_1.jpg"
                     className="object-cover w-full h-full"
                     alt="Beach house"
                 />
@@ -24,7 +24,7 @@ const PropertyDetailPage = () => {
 
                     <div className="py-6 flex items-center space-x-4">
                         <Image
-                                src="/profilepics/ladygirl.jpg"
+                                src="/ladygirl.jpg"
                                 width={50}
                                 height={50}
                                 className="rounded-full"

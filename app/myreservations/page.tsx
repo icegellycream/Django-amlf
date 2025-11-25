@@ -11,7 +11,7 @@ const MyReservationsPage = () => {
                         <div className="relative overflow-hidden aspect-square rounded-xl">
                             <Image
                                 fill
-                                src="/propertyItemImages/beach_1.jpg"
+                                src="/beach_1.jpg"
                                 className="hover:scale-110 object-cover transition h-full w-full"
                                 alt="Beach House"
                             />
@@ -38,7 +38,7 @@ const MyReservationsPage = () => {
                         <div className="relative overflow-hidden aspect-square rounded-xl">
                             <Image
                                 fill
-                                src="/propertyItemImages/beach_1.jpg"
+                                src="/beach_1.jpg"
                                 className="hover:scale-110 object-cover transition h-full w-full"
                                 alt="Beach House"
                             />

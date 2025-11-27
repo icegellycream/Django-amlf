@@ -12,7 +12,15 @@ const apiService = {
                     'Content-Type': 'application/json',
                 },
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().catch(() => {
+                        // If JSON parsing fails, return a generic error with status
+                        return { non_field_errors: [`Server error: ${response.status} ${response.statusText}`] };
+                    });
+                }
+                return response.json();
+            })
             .then((json) => {
                 console.log('Response', json);
 
@@ -36,7 +44,15 @@ const apiService = {
                 },
                 body: JSON.stringify(data)
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().catch(() => {
+                        // If JSON parsing fails, return a generic error with status
+                        return { non_field_errors: [`Server error: ${response.status} ${response.statusText}`] };
+                    });
+                }
+                return response.json();
+            })
             .then((json) => {
                 console.log('Response', json);
 

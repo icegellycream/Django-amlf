@@ -19,5 +19,5 @@ const CustomButton: React.FC<CustomButtonProps> = ({
         </div>
     )
 }
-
+    
 export default CustomButton;

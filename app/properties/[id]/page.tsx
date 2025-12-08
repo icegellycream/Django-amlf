@@ -42,7 +42,7 @@ const PropertyDetailPage = async ({params}: {params: Promise<{id: string}>}) => 
                             />
                         )}
 
-                        <p><strong>{property.landlord?.name || 'Host'}</strong> is your host</p>
+                        <p><strong>{property.landlord?.name}</strong> is your host</p>
                         
                     </div>
                     <hr />

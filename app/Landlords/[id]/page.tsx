@@ -10,10 +10,10 @@ const LandlordsDetailPage = () => {
                 <aside className="col-span-1 mb-4">
                     <div className="flex flex-col items-center p-6 rounded-xl border border-gray-300 shadow-xl">
                         <Image 
-                            src="/ladygirl.jpg"
+                            src="landlord.jpg"
                             width={200}
                             height={200}
-                            alt="the lady name"
+                            alt="the landlord name"
                             className="rounded-full"
                         />
 

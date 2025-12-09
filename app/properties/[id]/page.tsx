@@ -2,14 +2,18 @@ import Image from "next/image";
 import ReservationSidebar from "@/app/components/properties/ReservationSidebar";
 
 import apiService from "@/app/services/apiService";
+import { getUserId } from "@/app/lib/actions";
 
 const PropertyDetailPage = async ({params}: {params: Promise<{id: string}>}) => {
     const { id } = await params;
+    const userId = await getUserId();
+    console.log('userId', userId);
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/api/properties/${id}`, {
         cache: 'no-store'
     });
 
     const { data: property } = await response.json();
+    
 
     return (
         <main className="max-w-[1500px] mx-auto px-6 pb-6">
@@ -54,6 +58,7 @@ const PropertyDetailPage = async ({params}: {params: Promise<{id: string}>}) => 
 
                 <ReservationSidebar
                     property={property}
+                    userId={userId}
                 />
             </div>
         </main>

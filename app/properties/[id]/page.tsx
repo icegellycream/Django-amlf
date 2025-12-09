@@ -1,18 +1,33 @@
 import Image from "next/image";
+import Link from "next/link";
 import ReservationSidebar from "@/app/components/properties/ReservationSidebar";
 
 import apiService from "@/app/services/apiService";
 import { getUserId } from "@/app/lib/actions";
 
 const PropertyDetailPage = async ({params}: {params: Promise<{id: string}>}) => {
-    const { id } = await params;
-    const userId = await getUserId();
-    console.log('userId', userId);
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/api/properties/${id}`, {
-        cache: 'no-store'
-    });
+    const paramsValue = await params;
+    const { id } = paramsValue;
+    let property;
+    let userId;
 
-    const { data: property } = await response.json();
+    try {
+        const response = await apiService.get(`/api/properties/${id}`);
+        property = response.data;
+        userId = await getUserId();
+        
+        console.log('userId', userId);
+    } catch (error) {
+        console.error('Failed to load property:', error);
+        return (
+            <main className="max-w-[1500px] mx-auto px-6 pb-6">
+                <div className="text-center py-12">
+                    <h1 className="text-2xl font-bold text-red-600 mb-4">Error Loading Property</h1>
+                    <p className="text-gray-600">Unable to load property details. Please try again later.</p>
+                </div>
+            </main>
+        );
+    }
     
 
     return (
@@ -35,7 +50,10 @@ const PropertyDetailPage = async ({params}: {params: Promise<{id: string}>}) => 
                     </span>
                     <hr />
 
-                    <div className="py-6 flex items-center space-x-4">
+                    <Link 
+                        href = {`/Landlords/${property.landlord.id}`}
+                        className="py-6 flex items-center space-x-4"
+                    >
                         {property.landlord?.avatar_url && (
                         <Image          
                                 src={property.landlord.avatar_url}
@@ -46,9 +64,9 @@ const PropertyDetailPage = async ({params}: {params: Promise<{id: string}>}) => 
                             />
                         )}
 
-                        <p><strong>{property.landlord?.name}</strong> is your host</p>
-                        
-                    </div>
+                        <p><strong>{property.landlord.name}</strong> is your host</p>  
+                    </Link>
+
                     <hr />
 
                     <p className="mt-6 text-lg">

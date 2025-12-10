@@ -114,13 +114,13 @@ const ConversationDetail: React.FC<ConversationDetailProps> = ({
                     value={newMessage}
                     onChange={(e) => setNewMessage(e.target.value)}
                 />
- 
-                <CustomButton  
-                    label='Send'
+
+                <CustomButton 
+                    label='Send' 
                     onClick={sendMessage}
-                    className="w-[100px]"
+                    className="w-[100px]" 
                 />
-            </div>
+            </div> 
         </>
     )
 }

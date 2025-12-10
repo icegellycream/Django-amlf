@@ -8,11 +8,13 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "16.0.1",
+    "next": "^16.0.8",
     "react": "19.2.0",
     "react-date-range": "^2.0.1",
     "react-dom": "19.2.0",
     "react-select": "^5.10.2",
+    "react-use-websocket": "^4.13.0",
+    "socket.io-client": "^4.8.1",
     "world-countries": "^5.1.0",
     "zustand": "^5.0.8"
   },

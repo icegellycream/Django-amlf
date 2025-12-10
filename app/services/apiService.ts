@@ -4,16 +4,23 @@ const apiService = {
     get: async function (url: string): Promise<any> {
         console.log('get', url);
 
-        const token = await getAccessToken();
+        let token = await getAccessToken();
+
+        const apiHost = process.env.NEXT_PUBLIC_API_HOST?.replace(/\/$/, '') || '';
 
         return new Promise((resolve, reject) => {
-            fetch(`${process.env.NEXT_PUBLIC_API_HOST}${url}`, {
+            const headers: any = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            };
+
+            if (token) {
+                headers['Authorization'] = `Bearer ${token}`;
+            }
+
+            fetch(`${apiHost}${url}`, {
                 method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                }
+                headers: headers
             })
                 .then(response => response.json())
                 .then((json) => {
@@ -32,23 +39,36 @@ const apiService = {
 
         const token = await getAccessToken();
 
+        const apiHost = process.env.NEXT_PUBLIC_API_HOST?.replace(/\/$/, '') || '';
+
         return new Promise((resolve, reject) => {
-            fetch(`${process.env.NEXT_PUBLIC_API_HOST}${url}`, {
+            const headers: any = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            };
+
+            if (token) {
+                headers['Authorization'] = `Bearer ${token}`;
+            }
+
+            fetch(`${apiHost}${url}`, {
                 method: 'POST',
                 body: JSON.stringify(data),
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
+                headers: headers
             })
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
                 .then((json) => {
                     console.log('Response:', json);
 
                     resolve(json);
                 })
                 .catch((error => {
+                    console.error('Post error:', error);
                     reject(error);
                 }))
         })
@@ -59,13 +79,19 @@ const apiService = {
 
         const token = await getAccessToken();
 
+        const apiHost = process.env.NEXT_PUBLIC_API_HOST?.replace(/\/$/, '') || '';
+
         return new Promise((resolve, reject) => {
-            fetch(`${process.env.NEXT_PUBLIC_API_HOST}${url}`, {
+            const headers: any = {};
+
+            if (token) {
+                headers['Authorization'] = `Bearer ${token}`;
+            }
+
+            fetch(`${apiHost}${url}`, {
                 method: 'POST',
                 body: formData,
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
+                headers: headers
             })
                 .then(response => response.json())
                 .then((json) => {
@@ -82,8 +108,10 @@ const apiService = {
     postWithoutToken: async function(url: string, data: any): Promise<any> {
         console.log('post', url, data);
 
+        const apiHost = process.env.NEXT_PUBLIC_API_HOST?.replace(/\/$/, '') || '';
+
         return new Promise((resolve, reject) => {
-            fetch(`${process.env.NEXT_PUBLIC_API_HOST}${url}`, {
+            fetch(`${apiHost}${url}`, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {

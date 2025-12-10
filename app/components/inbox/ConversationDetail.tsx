@@ -54,10 +54,10 @@ const ConversationDetail: React.FC<ConversationDetailProps> = ({
     }, [lastJsonMessage]);
 
     const sendMessage = async () => {
-        console.log('sendMessage'),
+        console.log('sendMessage'), 
 
         sendJsonMessage({
-            event: 'chat_message',
+            event: 'chat_message', 
             data: {
                 body: newMessage,
                 name: myUser?.name,
@@ -75,7 +75,7 @@ const ConversationDetail: React.FC<ConversationDetailProps> = ({
 
     const scrollToBottom = () => {
         if (messagesDiv.current) {
-            messagesDiv.current.scrollTop = messagesDiv.current.scrollheight;
+            messagesDiv.current.scrollTop = messagesDiv.current.scrollheight; 
         }
     }
 
@@ -108,17 +108,17 @@ const ConversationDetail: React.FC<ConversationDetailProps> = ({
 
             <div className="mt-4 py-4 px-6 flex border border-gray-300 space-x-4 rounded-xl">
                 <input
-                    type="text"
-                    placeholder="Type your message..."
+                    type="text" 
+                    placeholder="Type your message..." 
                     className="w-full p-2 bg-gray-200 rounded-xl"
                     value={newMessage}
                     onChange={(e) => setNewMessage(e.target.value)}
                 />
 
                 <CustomButton 
-                    label='Send' 
+                    label='Send'
                     onClick={sendMessage}
-                    className="w-[100px]" 
+                    className="w-[100px]"
                 />
             </div> 
         </>

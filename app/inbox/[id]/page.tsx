@@ -14,7 +14,8 @@ export type MessageType = {
     created_by: UserType
 }
 
-const ConversationPage = async ({ params }: { params: {id: string }}) => {
+const ConversationPage = async ({ params }: { params: Promise<{id: string}> }) => {
+    const { id } = await params;
     const userId = await getUserId();
     const token = await getAccessToken();
 
@@ -26,18 +27,29 @@ const ConversationPage = async ({ params }: { params: {id: string }}) => {
         )
     }
 
-    const conversation = await apiService.get(`/api/chat/${params.id}/`)
+    try {
+        const response = await apiService.get(`/api/chat/${id}/`)
+        
+        console.log('Conversation response:', response);
 
-    return (
-        <main className="max-w-[1500px] mx-auto px-6 pb-6"> 
-            <ConversationDetail 
-                token={token}
-                userId={userId}
-                messages={conversation.messages}
-                conversation={conversation.conversation}
-            />
-        </main>
-    )
+        return (
+            <main className="max-w-[1500px] mx-auto px-6 pb-6"> 
+                <ConversationDetail 
+                    token={token}
+                    userId={userId}
+                    messages={response.messages || []}
+                    conversation={response.conversation}
+                />
+            </main>
+        )
+    } catch (error) {
+        console.error('Error loading conversation:', error);
+        return (
+            <main className="max-w-[1500px] mx-auto px-6 pb-6">
+                <p>Error loading conversation: {String(error)}</p>
+            </main>
+        )
+    }
 }
 
 export default ConversationPage;

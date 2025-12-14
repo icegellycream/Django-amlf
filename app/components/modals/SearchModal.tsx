@@ -1,6 +1,6 @@
 'use client';
 
-import useSearchModal from "@/app/hooks/useSearchModal";
+import useSearchModal, { SearchQuery } from "@/app/hooks/useSearchModal";
 import { Range } from "react-date-range";
 import DatePicker from "../forms/Calendar";
 import Modal from "./Modal";
@@ -27,6 +27,17 @@ const SearchModal = () => {
     //
 
     const closeAndSearch = () => {
+        const newSearchQuery: SearchQuery = {
+            country: country?.label,
+            checkIn: dateRange.startDate,
+            checkOut: dateRange.endDate,
+            guests: parseInt(numGuests),
+            bedrooms: parseInt(numBedrooms),
+            bathrooms: parseInt(numBathrooms),
+            category: ''
+        }
+
+        searchModal.setQuery(newSearchQuery);
         searchModal.close();
     }
 
